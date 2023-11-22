@@ -22,16 +22,19 @@ public class DeleteButton extends CustomButton {
         setImage("delete.png");
         addActionListener(e -> {
             JTable jTable = dashboardWindow.getCurrentTable();
-            int selectedRow = jTable.getSelectedRow();
-            if (selectedRow != -1) {
-                int id = (int) jTable.getModel().getValueAt(selectedRow, 0);
-                switch (dashboardWindow.getCurrentTable().getName()) {
-                    case "customers" -> new CustomerDAO().delete(id);
-                    case "products" -> new ProductDAO().delete(id);
-                    case "orders" -> new OrderDAO().delete(id);
-                    case "order_products" -> new OrderProductDAO().delete(id);
+            for (int row : jTable.getSelectedRows()) {
+                if (row != -1) {
+                    int id = (int) jTable.getModel().getValueAt(row, 0);
+                    System.out.println(id);
+                    switch (dashboardWindow.getCurrentTable().getName()) {
+                        case "customers" -> new CustomerDAO().delete(id);
+                        case "products" -> new ProductDAO().delete(id);
+                        case "orders" -> new OrderDAO().delete(id);
+                        case "order_products" -> new OrderProductDAO().delete(id);
+                    }
                 }
             }
+            dashboardWindow.setTable();
         });
     }
 

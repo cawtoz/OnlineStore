@@ -3,7 +3,6 @@ package com.github.cawtoz.onlinestore;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.github.cawtoz.onlinestore.database.Database;
 import com.github.cawtoz.onlinestore.ui.dashboard.DashboardWindow;
-import com.github.cawtoz.onlinestore.ui.login.LoginWindow;
 import lombok.Getter;
 
 /**

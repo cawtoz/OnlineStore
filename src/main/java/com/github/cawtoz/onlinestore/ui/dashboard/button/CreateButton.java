@@ -15,7 +15,7 @@ public class CreateButton extends CustomButton {
     public CreateButton(DashboardWindow dashboardWindow, int x, int y) {
         setBounds(x, y, 50, 50);
         setImage("add.png");
-        addActionListener((e) -> new CreateWindow(dashboardWindow.getTableType()).setVisible(true));
+        addActionListener((e) -> new CreateWindow(dashboardWindow).setVisible(true));
     }
 
 }

@@ -15,6 +15,6 @@ import lombok.ToString;
 @Getter @Setter
 @AllArgsConstructor
 public class OrderProduct {
-    private final int id, order_id, product_id;
+    private final int id, orderId, productId;
     private int quantity;
 }

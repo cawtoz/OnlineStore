@@ -34,7 +34,7 @@ public class OrderDAO extends DAO<Order> {
     @Override
     public void setCreateValues(Order order, StatementBuilder statement) {
         statement
-                .setInt(1, order.getId())
+                .setInt(1, order.getCustomerId())
                 .setDate(2, order.getDate())
                 .setString(3, order.getOrderStatus().toString().toLowerCase());
     }

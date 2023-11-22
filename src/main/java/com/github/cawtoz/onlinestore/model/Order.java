@@ -18,7 +18,7 @@ import java.sql.Date;
 @Getter @Setter
 @AllArgsConstructor
 public class Order {
-    private final int id, customer_id;
+    private final int id, customerId;
     private Date date;
     private OrderStatus orderStatus;
 }

@@ -5,6 +5,7 @@ import com.github.cawtoz.onlinestore.model.enums.TableType;
 import com.github.cawtoz.onlinestore.model.enums.UserType;
 import com.github.cawtoz.onlinestore.ui.create.button.AcceptButton;
 import com.github.cawtoz.onlinestore.ui.create.button.CancelButton;
+import com.github.cawtoz.onlinestore.ui.dashboard.DashboardWindow;
 import com.github.cawtoz.onlinestore.util.CustomDialog;
 import com.github.cawtoz.onlinestore.util.CustomTextField;
 import lombok.Getter;
@@ -25,6 +26,7 @@ import java.util.List;
 @Getter
 public class CreateWindow extends CustomDialog {
 
+    private DashboardWindow dashboardWindow;
     private JLabel jLabelSquare;
     private List<CustomTextField> customTextFields = new ArrayList<>();
     private JLabel warningText;
@@ -32,8 +34,9 @@ public class CreateWindow extends CustomDialog {
     private JComboBox jComboBoxStatus;
     private TableType tableType;
 
-    public CreateWindow(TableType tableType) {
-        this.tableType = tableType;
+    public CreateWindow(DashboardWindow dashboardWindow) {
+        this.dashboardWindow = dashboardWindow;
+        this.tableType = dashboardWindow.getTableType();
         setTitle("Create");
         setSize(1000, 700);
         setSquare();

@@ -25,7 +25,7 @@ public class OrdersTable extends Table {
         return new OrderDAO().getAll().stream()
                 .map(product -> new Object[] {
                         product.getId(),
-                        product.getId(),
+                        product.getCustomerId(),
                         product.getDate(),
                         product.getOrderStatus().toString(),
                 }).toArray(Object[][]::new);

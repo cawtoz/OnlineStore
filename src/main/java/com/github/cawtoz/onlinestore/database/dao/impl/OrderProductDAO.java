@@ -33,8 +33,8 @@ public class OrderProductDAO extends DAO<OrderProduct> {
     @Override
     public void setCreateValues(OrderProduct orderProduct, StatementBuilder statement) {
         statement
-                .setInt(1, orderProduct.getOrder_id())
-                .setInt(2, orderProduct.getProduct_id())
+                .setInt(1, orderProduct.getOrderId())
+                .setInt(2, orderProduct.getProductId())
                 .setInt(3, orderProduct.getQuantity());
     }
 

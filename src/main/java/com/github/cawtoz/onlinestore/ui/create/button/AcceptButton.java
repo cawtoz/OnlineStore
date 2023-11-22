@@ -40,6 +40,7 @@ public class AcceptButton extends CustomButton {
                 case ORDER_PRODUCTS -> new OrderProductDAO().create(buildOrderProduct());
             }
 
+            createWindow.getDashboardWindow().setTable();
             createWindow.setVisible(false);
             setCursor(new Cursor(Cursor.HAND_CURSOR));
         });
