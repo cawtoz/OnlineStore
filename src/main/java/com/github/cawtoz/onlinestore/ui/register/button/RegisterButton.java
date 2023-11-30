@@ -48,33 +48,25 @@ public class RegisterButton extends CustomButton {
 
     public String register() {
 
-        if (customer.getName().equals(" ")) return "Invalid name";
+
+        if (customer.getName().isEmpty()) return "Invalid name";
         if (!customer.getEmail().contains("@")) return "Invalid email";
 
         try {
-            if (customer.getPhone().contains(" ") || customer.getPhone().length() < 6 || customer.getPhone().length() > 20) return "Invalid phone";
+            String phone = customer.getPhone();
+            if (phone.isEmpty() || phone.length() < 6 || phone.length() > 20) return "Invalid phone";
+            Long.parseLong(phone);
         } catch (NumberFormatException e) {
             return "Invalid phone";
         }
 
-        if (customer.getUsername().contains(" ")) return "Invalid username";
-        if (customer.getPassword().equals(" ") || !customer.getPassword().equals(repeatPassword)) return "Passwords do not match";
+        if (customer.getUsername().isEmpty()) return "Invalid username";
+        if (customer.getPassword().isEmpty() || !customer.getPassword().equals(repeatPassword)) return "Passwords do not match";
+        if (!registerWindow.getJCheckBox().isSelected()) return "You must accept the terms of conditions to register";
 
         for (Customer cm : new CustomerDAO().getAll()) {
-
-
-            if (cm.getUsername().equals(customer.getUsername())) {
-                return "The username " + customer.getUsername() + " already exists";
-            }
-
-            if (cm.getEmail().equals(customer.getEmail())) {
-                return "There is already a registered user with this email";
-            }
-
-        }
-
-        if (!registerWindow.getJCheckBox().isSelected()) {
-            return "You must accept the terms of conditions to register";
+            if (cm.getUsername().equals(customer.getUsername())) return "The username " + customer.getUsername() + " already exists";
+            if (cm.getEmail().equals(customer.getEmail())) return "There is already a registered user with this email";
         }
 
         return "true";
@@ -86,7 +78,7 @@ public class RegisterButton extends CustomButton {
         repeatPassword = customTextFields.get(5).getText();
         customer = new Customer(
                 1,
-                customTextFields.get(0).getJTextField().getText(),
+                customTextFields.get(0).getText(),
                 "",
                 customTextFields.get(2).getText(),
                 customTextFields.get(1).getText(),

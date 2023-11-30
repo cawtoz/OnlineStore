@@ -25,7 +25,6 @@ public class DeleteButton extends CustomButton {
             for (int row : jTable.getSelectedRows()) {
                 if (row != -1) {
                     int id = (int) jTable.getModel().getValueAt(row, 0);
-                    System.out.println(id);
                     switch (dashboardWindow.getCurrentTable().getName()) {
                         case "customers" -> new CustomerDAO().delete(id);
                         case "products" -> new ProductDAO().delete(id);
